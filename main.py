@@ -1,16 +1,22 @@
-# This is a sample Python script.
+from fastmcp import FastMCP
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+# Initialize FastMCP server
+mcp = FastMCP("Brainz Server 🧠")
 
+@mcp.tool
+def hello(name: str) -> str:
+    """Say hello to someone"""
+    return f"Hello, {name}!"
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+@mcp.tool
+def add_numbers(a: int, b: int) -> int:
+    """Add two numbers together"""
+    return a + b
 
+@mcp.tool
+def get_info() -> str:
+    """Get information about this MCP server"""
+    return "This is the Brainz MCP server built with FastMCP!"
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+if __name__ == "__main__":
+    mcp.run()  # Uses STDIO transport by default
